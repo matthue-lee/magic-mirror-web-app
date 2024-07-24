@@ -1,7 +1,9 @@
+'use client'
+
 import React, {useRef, useState} from 'react'
 import {Form, Card, Button, Alert} from 'react-bootstrap'
-import { useAuth } from '../contexts/AuthContext'
-import { Link } from "react-router-dom"
+import { useAuth } from '../../contexts/AuthContext'
+import Link from 'next/link'
 
 
 export default function ForgotPassword() {
@@ -46,12 +48,12 @@ export default function ForgotPassword() {
                 <Button disabled = {loading} className='w-100' type="submit">Reset Password</Button>
             </Form>
             <div className='w-100  text-center mt-3'>
-                <Link to="/login">Login</Link>
+                <Link href="/login">Login</Link>
             </div>
         </Card.Body>
     </Card>
     <div className='w-100  text-center mt-2'>
-        Need an acount? <Link to="/signup">Sign Up</Link>
+        Need an acount? <Link href="/signup">Sign Up</Link>
     </div>
     </>
   )

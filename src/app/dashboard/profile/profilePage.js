@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, Alert} from 'react'
 import { Card, Button } from 'react-bootstrap'
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from '../../../contexts/AuthContext'
 import Link from 'next/link'
 import { Container } from "react-bootstrap"
 

@@ -1,9 +1,10 @@
 'use client';
-
-import React, {useRef, useState} from 'react'
+import React, {useRef, useState, useContext} from 'react'
 import {Form, Card, Button, Alert} from 'react-bootstrap'
 import { useAuth } from '../../contexts/AuthContext'
 import Link from 'next/link'
+import { navigate } from '../actions'
+
 
 export default function Login() {
     const emailRef = useRef()
@@ -12,21 +13,17 @@ export default function Login() {
     const [error, setError] = React.useState('')
     const [loading, setLoading] = React.useState(false)
 
-    async function handleSubmit(e){
-        e.preventDefault()
+    const handleSubmit = async (event) => {
+        event.preventDefault(); 
 
         try {
-            setError('')
-            setLoading(true)
-            await login(emailRef.current.value, passwordRef.current.value)
-            router.push('/')
+          let response = await login(emailRef.current.value, passwordRef.current.value)
+          navigate('/dashboard/profile')
+        } catch (error) {
+          // Handle error
+          console.error('Error logging in', error);
         }
-        catch{
-            setError('Unable to sign in')
-        }
-        setLoading(false)
-    }
-
+      };
   return (
     <>
     <Card>

@@ -28,7 +28,7 @@
     "./dist/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "src/app/page.js"  ],
   "exclude": [
     "node_modules"
   ]

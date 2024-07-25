@@ -1,18 +1,19 @@
 'use client'
 import React, { useContext, useEffect, useState } from 'react'
 import { auth } from '../firebase'
+import '../app/styles/globals.css'
 
 
 const AuthContext = React.createContext()
 
 export function useAuth() {
-    return useContext(AuthContext)
+    return React.useContext(AuthContext)
 }
 
 export function AuthProvider( { children } ) {
 
-    const[currentUser, setCurrentUser] = useState()
-    const[loading, setLoading] = useState(true)
+    const[currentUser, setCurrentUser] = React.useState()
+    const[loading, setLoading] = React.useState(true)
 
     function signup(email, password){
         return auth.createUserWithEmailAndPassword(email, password)
@@ -62,8 +63,15 @@ export function AuthProvider( { children } ) {
     }
 
     return (
+
         <AuthContext.Provider value={value}>
-            { !loading ? children : null }
+            <html>
+                <body>
+                    { !loading ? children : null }
+                </body>
+            </html>
         </AuthContext.Provider>
+
+
     )
 }

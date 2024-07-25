@@ -3,8 +3,7 @@ import React from 'react'
 import { Sidebar, useSidebar, Overlay } from '@rewind-ui/core';
 import { Button } from '@rewind-ui/core';
 import { FaBook, FaBriefcase, FaEnvelopeOpen, FaKey, FaLifeRing, FaRocket, FaSlidersH, FaUser, FaUserShield } from "react-icons/fa";
-import Image from 'next/image'
-import '../styles/globals.css'
+
 
 
 export default function DashboardLayout({
@@ -18,17 +17,17 @@ export default function DashboardLayout({
   
     return (
       <section>
-        {    <div className="relative flex flex-row w-full h-full min-h-[35rem]">
+        <div className="relative flex flex-row w-full h-full min-h-[35rem]">
       <Sidebar
-        onToggle={(state) => {
-          setExpanded(state.expanded);
-        }}
-        className="absolute"
-      >
+          onToggle={(state) => {
+            setExpanded(state.expanded);
+          }}
+          className="absolute"
+        >
         <Sidebar.Head>
-          <Sidebar.Head.Logo>
+          {/* <Sidebar.Head.Logo>
             <Image src="/images/rewind.svg" width={48} height={48} alt="Rewind-UI" />
-          </Sidebar.Head.Logo>
+          </Sidebar.Head.Logo> */}
           <Sidebar.Head.Title>Rewind-UI</Sidebar.Head.Title>
           <Sidebar.Head.Toggle />
         </Sidebar.Head>
@@ -82,20 +81,22 @@ export default function DashboardLayout({
         </Sidebar.Footer>
       </Sidebar>
 
+
       <main
         className={`transition-all transform duration-100 text-slate-700 flex w-full flex-col items-center ${
           expanded ? 'md:ml-64' : 'md:ml-20'
         }`}
       >
-      {mobile ? (
-        <Overlay
-          blur="none"
-          onClick={() => {
-            sidebar.toggleMobile();
-          }}
-          className="md:hidden z-40"
-        />
-      ) : null}
+
+        {mobile && (
+          <Overlay
+            blur="none"
+            onClick={() => {
+              sidebar.toggleMobile();
+            }}
+            className="md:hidden z-40"
+          />
+        )}
 
 
       <header className="flex flex-row sticky top-0 px-8 items-center justify-center bg-white border-b border-b-gray-100 w-full shadow-sm min-h-[4rem]">
@@ -119,7 +120,8 @@ export default function DashboardLayout({
           </svg>
         </Button>
       </header>
-      <div className="w-full h-full p-8">
+
+      <div className="flex w-full h-full p-8">
           {children}
         </div>
 
@@ -129,8 +131,7 @@ export default function DashboardLayout({
 
 
       </main>
-    </div>} 
-
-      </section>
+    </div>
+  </section>
     )
   }

@@ -1,35 +1,34 @@
-import React, {useRef, useState} from 'react'
+'use client';
+import React, { useRef } from 'react'
 import {Form, Card, Button, Alert} from 'react-bootstrap'
 import { useAuth } from '../../contexts/AuthContext'
-import { Link , useNavigate } from 'react-router-dom'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+
 
 export default function Signup() {
     const emailRef = useRef()
     const passwordRef = useRef()
     const passwordConfirmRef = useRef()
     const { signup } = useAuth()
-    const [error, setError] = useState('')
-    const [loading, setLoading] = useState(false)
-    const navigate = useNavigate()
+    const [error, setError] = React.useState('')
+    const [loading, setLoading] = React.useState(false)
+    const router = useRouter()
 
-    async function handleSubmit(e){
-        e.preventDefault()
-        if (passwordRef.current.value !== passwordConfirmRef.current.value){
-            return setError('Passwords do not match')
-        }
 
+
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();  
         try {
-            setError('')
-            setLoading(true)
-            await signup(emailRef.current.value, passwordRef.current.value)
-            navigate("/")
-
+          await signup(emailRef.current.value, passwordRef.current.value)
+        //   alert(`success`)
+          router.push('/dashboard/profile')
+        } catch (error) {
+          // Handle error
+          console.error('Error submitting form:', error);
         }
-        catch{
-            setError('Unable to create account')
-        }
-        setLoading(false)
-    }
+      };
 
   return (
     <>
@@ -60,7 +59,7 @@ export default function Signup() {
         </Card.Body>
     </Card>
     <div className='w-100  text-center mt-2'>
-        Already have an acount? <Link to="/login">Log In</Link>
+        Already have an acount? <Link href="/login">Log In</Link>
     </div>
     </>
   )

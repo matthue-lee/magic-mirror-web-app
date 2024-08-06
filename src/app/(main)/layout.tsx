@@ -1,8 +1,8 @@
-import type { Metadata } from 'next'
-import { AuthProvider } from "../contexts/AuthContext"
+import type { Metadata } from 'next';
+import Navbar from '../../components/navlayout';
 
 // These styles apply to every route in the application
-import './styles/globals.css'
+import '../styles/globals.css'
 
 
 export const metadata: Metadata = {
@@ -16,8 +16,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <AuthProvider>
-      {children}
-    </AuthProvider>
+
+    <html>
+        <body>
+        <Navbar/>
+        {children}
+        </body>
+    </html>
+
   )
 }

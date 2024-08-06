@@ -28,7 +28,7 @@
     "./dist/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/app/page.js"  ],
+, "src/app/(main)/page.js", "src/app/dashboard/page.js", "src/components/navlayout.js"  ],
   "exclude": [
     "node_modules"
   ]

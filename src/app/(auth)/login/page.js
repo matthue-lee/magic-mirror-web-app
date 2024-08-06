@@ -1,10 +1,9 @@
 'use client';
-import React, {useRef, useState, useContext} from 'react'
+import React, {useRef, useState } from 'react'
 import {Form, Card, Button, Alert} from 'react-bootstrap'
-import { useAuth } from '../../contexts/AuthContext'
+import { useAuth } from '../../../contexts/AuthContext'
 import Link from 'next/link'
-import { navigate } from '../actions'
-
+import { useRouter } from 'next/navigation'
 
 export default function Login() {
     const emailRef = useRef()
@@ -12,13 +11,14 @@ export default function Login() {
     const { login } = useAuth()
     const [error, setError] = React.useState('')
     const [loading, setLoading] = React.useState(false)
+    const router = useRouter()
 
     const handleSubmit = async (event) => {
         event.preventDefault(); 
 
         try {
           let response = await login(emailRef.current.value, passwordRef.current.value)
-          navigate('/dashboard/profile')
+          router.push('/dashboard/profile')
         } catch (error) {
           // Handle error
           console.error('Error logging in', error);

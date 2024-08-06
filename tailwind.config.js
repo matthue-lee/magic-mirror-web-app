@@ -3,9 +3,7 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
     content: [
-      "./app/**/*.{js,ts,jsx,tsx}",
-      "./pages/**/*.{js,ts,jsx,tsx}",
-      "./components/**/*.{js,ts,jsx,tsx}",  
+      "./src/**/*.{js,ts,jsx,tsx,mdx}",
       './public/index.html',
       // you can either add all styles
       //'./node_modules/@rewind-ui/core/dist/theme/styles/*.js',

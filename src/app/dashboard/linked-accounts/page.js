@@ -8,6 +8,7 @@ export default function LinkedAccounts() {
 
   const handleGoogle = async (e) => {
     const provider = await new GoogleAuthProvider()
+    provider.addScope("https://www.googleapis.com/auth/calendar")
     return signInWithPopup(auth, provider)
 
   }

@@ -36,7 +36,7 @@ export default function DashboardLayout({
 
         <Sidebar.Nav>
           <Sidebar.Nav.Section>
-            <Sidebar.Nav.Section.Item icon={<FaRocket />} label="Dashboard" href="#" active />
+            <Sidebar.Nav.Section.Item icon={<FaRocket />} label="Dashboard" href="/dashboard" active />
           </Sidebar.Nav.Section>
 
           <Sidebar.Nav.Section>

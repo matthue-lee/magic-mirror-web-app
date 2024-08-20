@@ -1,9 +1,11 @@
 'use client';
 import React, {useRef, useState } from 'react'
 import {Form, Card, Button, Alert} from 'react-bootstrap'
-import { useAuth } from '../../../contexts/AuthContext'
+import { useAuth } from '../../../../contexts/AuthContext'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import "bootstrap/dist/css/bootstrap.min.css"
+
 
 export default function Login() {
     const emailRef = useRef()
@@ -18,7 +20,7 @@ export default function Login() {
 
         try {
           let response = await login(emailRef.current.value, passwordRef.current.value)
-          router.push('/dashboard/profile')
+          router.push('/dashboard')
         } catch (error) {
           // Handle error
           console.error('Error logging in', error);

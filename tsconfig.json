@@ -28,7 +28,7 @@
     "./dist/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/app/(main)/page.js", "src/app/dashboard/page.js", "src/components/navlayout.js"  ],
+, "src/app/(main)/page.js", "src/app/(auth)/dashboard/page.js", "src/components/navlayout.js", "src/components/Button.js", "src/components/googleCalendarApi.js"  ],
   "exclude": [
     "node_modules"
   ]

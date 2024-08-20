@@ -1,11 +1,11 @@
 'use client'
 import React, { useState, Alert} from 'react'
 import { Card, Button } from 'react-bootstrap'
-import { useAuth } from '../../../contexts/AuthContext'
+import { useAuth } from '../../../../contexts/AuthContext'
 import Link from 'next/link'
 import { Container } from "react-bootstrap"
 
-export default function Dashboard() {
+export default function page() {
 
   const [error, setError] = useState("")
   const {currentUser, logout } = useAuth()
@@ -21,8 +21,6 @@ export default function Dashboard() {
     }
   }
   return (
-    <>
-    <Container>
     <div class="col w-25 p-3 justify-content-center">        
     <Card>
       <Card.Body>
@@ -38,7 +36,5 @@ export default function Dashboard() {
         <Button variant="link" onClick={ handleLogout }>Log Out</Button>
     </div>
     </div>
-    </Container>
-    </> 
   )
 }

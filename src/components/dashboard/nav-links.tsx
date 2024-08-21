@@ -18,7 +18,7 @@ const links = [
     href: '/dashboard/linked-accounts',
     icon: DocumentDuplicateIcon,
   },
-  { name: 'Support', href: '/dashboard/support', icon: UserGroupIcon },
+  { name: 'Support', href: '/dashboard/spotify-linking', icon: UserGroupIcon },
 ];
 
 export default function NavLinks() {

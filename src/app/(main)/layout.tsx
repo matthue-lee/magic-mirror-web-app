@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Navbar from '../../components/navlayout';
-
+import PrelineScript from "../../components/PrelineScript"
 // These styles apply to every route in the application
 import '../styles/globals.css'
 
@@ -21,6 +21,7 @@ export default function RootLayout({
         <body>
         <Navbar/>
         {children}
+        <PrelineScript />
         </body>
     </html>
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import Card from '../../../components/Card.js'
 
 export default function page() {
   return (
@@ -16,7 +17,12 @@ export default function page() {
           />
           
         </div>
-        team page
+        <div className='grid grid-cols-3 gap-4 place-items-start'>
+          <div></div>
+          <div>
+          <Card/>
+          </div>
+          </div>
     </div>
   )
 }

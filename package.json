@@ -23,6 +23,7 @@
     "headlessui": "^0.0.0",
     "next": "^14.2.5",
     "next-auth": "^4.24.7",
+    "preline": "^2.4.1",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.4",
     "react-bootstrap-sidebar-menu": "^2.0.3",

@@ -27,8 +27,15 @@
     "next-env.d.ts",
     "./dist/types/**/*.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "src/app/(main)/page.js", "src/app/(auth)/dashboard/page.js", "src/components/navlayout.js", "src/components/Button.js", "src/components/googleCalendarApi.js"  ],
+    "**/*.tsx",
+    "src/app/(main)/page.js",
+    "src/app/(auth)/dashboard/page.js",
+    "src/components/navlayout.js",
+    "src/components/Button.js",
+    "src/components/googleCalendarApi.js",
+    "src/components/Card.js",
+    ".next/types/**/*.ts"
+  ],
   "exclude": [
     "node_modules"
   ]

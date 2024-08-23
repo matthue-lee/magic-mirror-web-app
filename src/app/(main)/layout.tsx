@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import Navbar from '../../components/navlayout';
 import PrelineScript from "../../components/PrelineScript"
+import Card from '../../components/Card';
 // These styles apply to every route in the application
 import '../styles/globals.css'
+
 
 
 export const metadata: Metadata = {

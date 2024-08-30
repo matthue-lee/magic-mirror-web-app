@@ -4,6 +4,8 @@ import PrelineScript from "../../components/PrelineScript"
 import Card from '../../components/Card';
 // These styles apply to every route in the application
 import '../styles/globals.css'
+import { Suspense } from 'react';
+import DashboardSkeleton from '../../components/skeletons'
 
 
 
@@ -21,8 +23,11 @@ export default function RootLayout({
 
     <html>
         <body>
+        <Suspense fallback={<DashboardSkeleton/>}>
         <Navbar/>
+        
         {children}
+        </Suspense>
         <PrelineScript />
         </body>
     </html>

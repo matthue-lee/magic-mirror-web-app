@@ -35,7 +35,7 @@
     "src/components/googleCalendarApi.js",
     "src/components/Card.js",
     ".next/types/**/*.ts"
-  ],
+, "src/app/(auth)/dashboard/loading.js"  ],
   "exclude": [
     "node_modules"
   ]

@@ -3,6 +3,17 @@
 import { GoogleAuthProvider, signInWithPopup, OAuthProvider } from "firebase/auth";
 import { auth } from '../../../../firebase'
 
+// import { getAuth, linkWithCredential, GoogleAuthProvider } from 'firebase/auth';
+
+// // Assuming you have a valid Google ID token
+// const credential = GoogleAuthProvider.credential(googleIdToken);
+// const auth = getAuth();
+
+// // Link Google account to the current Firebase user
+
+
+
+
 export default function page() {
 
   const handleGoogleCalendar = async (e) => {
@@ -15,7 +26,27 @@ export default function page() {
   const handleGoogleEmail = async (e) => {
     const provider = await new GoogleAuthProvider();
     provider.addScope('https://www.googleapis.com/auth/gmail.readonly')
-    return signInWithPopup( auth, provider)
+    signInWithPopup( auth, provider)
+    .then((result) => {
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+
+
+    }).catch((error) => {
+
+    })
+
+    // //link email to current user.
+    // const user = auth.currentUser;
+    // user.linkWithCredential(credential)
+    //     .then((usercred) => {
+    //         console.log('Successfully linked with Google', usercred.user);
+    //     })
+    //     .catch((error) => {
+    //         console.error('Error linking with Google:', error);
+    //     });
+
+
   }
 
 

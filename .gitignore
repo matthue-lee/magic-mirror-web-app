@@ -18,6 +18,8 @@
 .env.test.local
 .env.production.local
 
+src\firebase\firebase\serviceAccountCredential.json
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

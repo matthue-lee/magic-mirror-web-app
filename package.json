@@ -19,7 +19,7 @@
     "class-variance-authority": "^0.7.0",
     "cloc": "^2.2.0-cloc",
     "dotenv": "^16.4.5",
-    "firebase": "^10.12.3",
+    "firebase": "^10.13.1",
     "headlessui": "^0.0.0",
     "next": "^14.2.5",
     "next-auth": "^4.24.7",

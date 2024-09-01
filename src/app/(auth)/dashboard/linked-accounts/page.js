@@ -2,6 +2,9 @@
 'use client'
 import { GoogleAuthProvider, signInWithPopup, OAuthProvider } from "firebase/auth";
 import { auth } from '../../../../firebase'
+import { collection, addDoc, getFirestore} from "firebase/firestore"; 
+
+
 
 // import { getAuth, linkWithCredential, GoogleAuthProvider } from 'firebase/auth';
 
@@ -15,6 +18,8 @@ import { auth } from '../../../../firebase'
 
 
 export default function page() {
+  const db = getFirestore();
+
 
   const handleGoogleCalendar = async (e) => {
     const provider = await new GoogleAuthProvider();
@@ -28,12 +33,18 @@ export default function page() {
     provider.addScope('https://www.googleapis.com/auth/gmail.readonly')
     signInWithPopup( auth, provider)
     .then((result) => {
+      alert('Your Google account has been successfully linked!');
+      console.log('yayyyy')
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
+      addToDb(token)
+
+
+
 
 
     }).catch((error) => {
-
+      console.log('we had an error oh fuck : ', error)
     })
 
     // //link email to current user.
@@ -49,6 +60,18 @@ export default function page() {
 
   }
 
+
+  async function addToDb(token){
+    try {
+      const docRef = await addDoc(collection(db, "users"), {
+        googleAuthToken: token
+      });
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+    
+  }
 
   const handleOutlookEmail = async (e) => {
     const provider = new OAuthProvider('microsoft.com');

@@ -65,11 +65,7 @@ export function AuthProvider( { children } ) {
     return (
 
         <AuthContext.Provider value={value}>
-            <html>
-                <body>
                     { !loading ? children : null }
-                </body>
-            </html>
         </AuthContext.Provider>
 
 

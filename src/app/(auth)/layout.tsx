@@ -9,9 +9,14 @@ export default function LoginLayout({
     children: React.ReactNode
   }) {
     return (
-      <AuthProvider>
+      <html>
+        <body>
+        <AuthProvider>
         {children}
       </AuthProvider>
+        </body>
+      </html>
+
 
     )
 }

@@ -25,7 +25,6 @@ export default function RootLayout({
         <body>
         <Suspense fallback={<DashboardSkeleton/>}>
         <Navbar/>
-        
         {children}
         </Suspense>
         <PrelineScript />

@@ -1,7 +1,10 @@
 // pages/index.js
 'use client'
-import { GoogleAuthProvider, signInWithPopup, OAuthProvider } from "firebase/auth";
-import { auth } from '../../../../firebase'
+import { GoogleAuthProvider, signInWithPopup, OAuthProvider, signInWithRedirect, linkWithCredential, getRedirectResult } from "firebase/auth";
+import { auth, db } from '../../../../firebase'
+import { collection, addDoc, setDoc, doc} from "firebase/firestore"; 
+
+
 
 // import { getAuth, linkWithCredential, GoogleAuthProvider } from 'firebase/auth';
 
@@ -15,38 +18,65 @@ import { auth } from '../../../../firebase'
 
 
 export default function page() {
+  const userID = auth.currentUser.uid
+
+
+  async function addUser(token) {
+    if (!auth.currentUser) {
+        console.log('User is not authenticated.');
+        return;
+    }
+
+    try {
+        const userId = auth.currentUser.uid;
+        await setDoc(doc(db, "users", userId), {
+            email: auth.currentUser.email,
+            googleAuthToken: "fakeVal"
+        });
+        console.log("Document successfully written!");
+    } catch (error) {
+        console.log("Error writing document: ", error);
+    }
+}
+
+
+
 
   const handleGoogleCalendar = async (e) => {
-    const provider = await new GoogleAuthProvider();
-    provider.addScope('https://www.googleapis.com/auth/calendar.events.readonly');
-    // provider.addScope('https://www.googleapis.com/auth/calendar.readonly')
-    return signInWithPopup( auth, provider)
+    // const provider = await new GoogleAuthProvider();
+    // provider.addScope('https://www.googleapis.com/auth/calendar.events.readonly');
+    // // provider.addScope('https://www.googleapis.com/auth/calendar.readonly')
+    // return signInWithPopup( auth, provider)
+
+
+    // const provider = await new GoogleAuthProvider();
+    auth.currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+      console.log('its win')
+      addUser(idToken)
+
+    
+      // ...
+    }).catch(function(error) {
+      console.log('had an error: ', error)
+    });
+
+
   }
+
+
+
+
 
   const handleGoogleEmail = async (e) => {
     const provider = await new GoogleAuthProvider();
     provider.addScope('https://www.googleapis.com/auth/gmail.readonly')
-    signInWithPopup( auth, provider)
+    console.log(userID)
+    console.log(auth.currentUser)
+    signInWithPopup(auth, provider)
     .then((result) => {
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
-
-
-    }).catch((error) => {
-
+      console.log(result)
+      addUser()
     })
-
-    // //link email to current user.
-    // const user = auth.currentUser;
-    // user.linkWithCredential(credential)
-    //     .then((usercred) => {
-    //         console.log('Successfully linked with Google', usercred.user);
-    //     })
-    //     .catch((error) => {
-    //         console.error('Error linking with Google:', error);
-    //     });
-
-
   }
 
 

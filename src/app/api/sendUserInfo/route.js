@@ -44,7 +44,11 @@
 // }
 
 // src/app/api/sendUserInfo/route.js
-export async function handler(req, res) {
-    res.status(200).json({ message: "User info sent" });
+// src/app/api/sendUserInfo/route.js
+export async function GET(request) {
+    return new Response(JSON.stringify({ message: "User info sent" }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
   

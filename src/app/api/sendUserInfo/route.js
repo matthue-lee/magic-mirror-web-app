@@ -42,3 +42,9 @@
 //         return NextResponse.json({ status: 'error', message: error.message }, { status: 500 });
 //     }
 // }
+
+// src/app/api/sendUserInfo/route.js
+export async function handler(req, res) {
+    res.status(200).json({ message: "User info sent" });
+  }
+  

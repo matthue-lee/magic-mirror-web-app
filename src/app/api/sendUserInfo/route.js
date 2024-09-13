@@ -1,7 +1,6 @@
 // app/api/getGoogleEmail/route.js
 import { NextResponse } from 'next/server';
 import admin from 'firebase-admin';
-import serviceAccount from '../../../firebase/serviceAccountCredential.json'
 
 
 // Initialize Firebase Admin SDK (only once)

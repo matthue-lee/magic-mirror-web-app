@@ -6,10 +6,13 @@ import serviceAccount from '../../../firebase/serviceAccountCredential.json'
 
 // Initialize Firebase Admin SDK (only once)
 if (!admin.apps.length) {
+    const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY);
+  
     admin.initializeApp({
-        credential: admin.credential.cert(serviceAccount),
+      credential: admin.credential.cert(serviceAccount),
+      databaseURL: "https://console.firebase.google.com/project/magic-mirror-53d21/storage/magic-mirror-53d21.appspot.com/files" // Make sure this matches your Firebase project
     });
-}
+  }
 
 export async function POST(request) {
     try {
